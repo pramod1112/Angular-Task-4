@@ -1,0 +1,39 @@
+<div class="row mt-5">
+    <div class="col-sm-12">
+        <form (ngSubmit)="submitForm()" [formGroup]="myForm">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <span class="p-float-label">
+                        <input id="float-input" type="text" pInputText (blur)="onblur()" name="box1"
+                            formControlName="box1">
+                        <label for="float-input">Box 1</label>
+                    </span>
+                    <small *ngIf="myForm.get('box1').invalid && myForm.get('box1').touched" class="text-danger">
+                        <span *ngIf="myForm.get('box1').errors?.['required']">Number is Required</span>
+                        <span *ngIf="myForm.get('box1').errors?.['maxNumber']">Incorrect value</span>
+                    </small>
+                </div>
+                <div class="form-group col-md-4">
+                    <span class="p-float-label">
+                        <input id="float-input" type="text" pInputText name="box2" (blur)="onblur()"
+                            formControlName="box2">
+                        <label for="float-input">Box 2</label>
+                    </span>
+                    <small *ngIf="myForm.get('box2').invalid && myForm.get('box2').touched" class="text-danger">
+                        <span *ngIf="myForm.get('box2').errors?.['required']">Number is Required</span>
+                        <span *ngIf="myForm.get('box2').errors?.['maxNumber']">Incorrect value</span>
+                    </small>
+                </div>
+                <div class="form-group ">
+                    <button type="submit" pButton>Create Chart</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <p-chart type="pie" [data]="data"></p-chart>
+    </div>
+</div>
