@@ -65,17 +65,20 @@ export class PiechartComponent implements OnInit {
   }
 
   onblur(){
-    this.inputBox1=this.myForm.value.box1
-    this.inputBox2=this.myForm.value.box2;
+    this.inputBox1=this.myForm.controls.box1.value;
 
-    if(this.inputBox1 && !this.inputBox2){
+    if(this.myForm.controls.box1.value){
       this.myForm.patchValue({
-        box2 : 100 - this.inputBox1,
+        box2 : 100 - this.myForm.controls.box1.value
       })
-    }else{
+    }
+  } 
+  onblur1(){
+    this.inputBox2=this.myForm.controls.box2.value;
+
+    if(this.myForm.controls.box2.value){
       this.myForm.patchValue({
-        box1 : 100 - this.inputBox2,
-       
+        box1 : 100 - this.myForm.controls.box2.value
       })
     }
   } 
